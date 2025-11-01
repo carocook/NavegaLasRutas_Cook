@@ -3,13 +3,14 @@ import { useState } from "react";
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [carrito, setCarrito] = useState([]);
 
   return (
     <>
-      <NavBar carrito={carrito} setCarrito={setCarrito} />
+      <NavBar carrito={carrito} />
 
       <Routes>
         <Route
@@ -41,7 +42,7 @@ function App() {
           }
         />
 
-        <Route path="*" element={<p>404 - Página no encontrada</p>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

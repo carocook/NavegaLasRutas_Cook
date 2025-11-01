@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ItemCount from "./ItemCount";
+import NotFound from "./NotFound";
 import anilloGoldImg from "../assets/anillo-gold.jpg";
 import anilloPlataImg from "../assets/anillo-plata.jpg";
 import collarGoldImg from "../assets/collar-gold.jpg";
@@ -27,14 +28,17 @@ function fetchProductById(id) {
 export default function ItemDetailContainer({ carrito, setCarrito }) {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
-    fetchProductById(id).then((data) => setProducto(data));
+    fetchProductById(id).then((data) => {
+      if (data) setProducto(data);
+      else setNotFound(true);
+    });
   }, [id]);
 
   const handleAddToCart = (cantidad) => {
     const existe = carrito.find((item) => item.id === producto.id);
-
     if (existe) {
       setCarrito(
         carrito.map((item) =>
@@ -48,6 +52,7 @@ export default function ItemDetailContainer({ carrito, setCarrito }) {
     }
   };
 
+  if (notFound) return <NotFound />;
   if (!producto) return <p>Cargando producto...</p>;
 
   return (

@@ -51,6 +51,16 @@
   background-color: #ffe07f;
 }
 
+.item-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.item-link:hover h4 {
+  color: #ffe07f;
+  cursor: pointer;
+}
+
 @media (max-width: 480px) {
   .item-card {
     max-width: 140px;
@@ -68,15 +78,5 @@
   .item-card button {
     font-size: 0.8rem;
     padding: 0.3rem 0.6rem;
-  }
-
-  .item-link {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .item-link:hover h4 {
-    color: #ffe07f;
-    cursor: pointer;
   }
 }
