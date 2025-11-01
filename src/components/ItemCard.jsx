@@ -1,12 +1,10 @@
+import { Link } from "react-router-dom";
 import "./ItemCard.css";
 
 function ItemCard({ producto, carrito, setCarrito }) {
   const agregarAlCarrito = () => {
-    // Ver si el producto ya está en el carrito
     const existe = carrito.find((item) => item.id === producto.id);
-
     if (existe) {
-      // Incrementar cantidad
       setCarrito(
         carrito.map((item) =>
           item.id === producto.id
@@ -15,7 +13,6 @@ function ItemCard({ producto, carrito, setCarrito }) {
         )
       );
     } else {
-      // Agregar nuevo producto
       setCarrito([...carrito, { ...producto, cantidad: 1 }]);
     }
   };
@@ -23,7 +20,9 @@ function ItemCard({ producto, carrito, setCarrito }) {
   return (
     <div className="item-card">
       <img src={producto.img} alt={producto.nombre} />
-      <h4>{producto.nombre}</h4>
+      <Link to={`/product/${producto.id}`} className="item-link">
+        <h4>{producto.nombre}</h4>
+      </Link>
       <p>Precio: ${producto.precio}</p>
       <button onClick={agregarAlCarrito}>Agregar al carrito</button>
     </div>

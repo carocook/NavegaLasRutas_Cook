@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom"; // <-- import
 import CartWidget from "./CartWidget";
 import logo from "../assets/logo.png";
 import "./NavBar.css";
@@ -8,23 +9,23 @@ function NavBar({ carrito }) {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <a href="#inicio">
+        <Link to="/">
           <img src={logo} alt="Logo Kuvika" />
-        </a>
+        </Link>
       </div>
 
       <ul className={`navbar-links ${menuOpen ? "active" : ""}`}>
         <li>
-          <a href="#inicio">Inicio</a>
+          <Link to="/">Inicio</Link>
         </li>
         <li>
-          <a href="#productos">Productos</a>
+          <Link to="/category/rings">Anillos</Link>
         </li>
         <li>
-          <a href="#cuidado">Como cuidar tus joyas</a>
+          <Link to="/category/necklaces">Collares</Link>
         </li>
         <li>
-          <a href="#cambios">Cambios y devoluciones</a>
+          <Link to="/category/bracelets">Pulseras</Link>
         </li>
       </ul>
 

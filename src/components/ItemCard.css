@@ -69,4 +69,14 @@
     font-size: 0.8rem;
     padding: 0.3rem 0.6rem;
   }
+
+  .item-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .item-link:hover h4 {
+    color: #ffe07f;
+    cursor: pointer;
+  }
 }
